@@ -71,13 +71,13 @@ void reconnect() {
 
 bool checkBound(float newValue, float prevValue, float maxDiff) {
   return !isnan(newValue) &&
-         (newValue < prevValue - maxDiff || newValue > prevValue + maxDiff);
+         (newValue <= prevValue - maxDiff || newValue >= prevValue + maxDiff);
 }
 
 long lastMsg = 0;
 float temp = 0.0;
 float hum = 0.0;
-float diff = 1.0;
+float diff = 0.1;
 
 void loop() {
   if (!client.connected()) {
